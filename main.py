@@ -1,8 +1,5 @@
 import os
-try:
-    print(a)
-except:
-    os.system("pip install scratchattach")
+
 a=True
 import streamlit as st,uuid,scratchattach as scratch3,os
 from multiapp import MultiApp
