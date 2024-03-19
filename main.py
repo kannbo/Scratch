@@ -1,6 +1,7 @@
 import os
 
 a=True
+
 import streamlit as st,uuid,scratchattach as scratch3,os
 from multiapp import MultiApp
 if len(st.session_state)==0:
@@ -19,8 +20,8 @@ def page_main():
             st.session_state["account"][uuid4]={"name":name,"password":password}
             st.write(f"成功!\nキー:{uuid4}")
             print(st.session_state["account"])
-        except:
-            st.write("失敗!パスワードを確認してね！")
+        except Exception as e:
+            st.write(f"失敗!パスワードを確認してね！{e}")
 def page_edit():
     st.header('キー作成')
     key=st.text_input("キー")
