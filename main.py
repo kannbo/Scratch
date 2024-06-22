@@ -13,6 +13,7 @@ def page_main():
     st.header('キー作成')
     name=st.text_input("名前を入力")
     password=st.text_input("セッションIDを入力")
+    st.write("https://github.com/TimMcCool/scratchattach/wiki/Get-your-session-id を参照を進める。")
     if st.button("作成"):
         try:
             scratch3.Session(password,username=password)
