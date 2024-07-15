@@ -47,8 +47,8 @@ def comment():
             project = session.connect_project(ploject)
             project.post_comment(content=text)
             st.write("成功")
-        except:
-            st.write("失敗")
+        except Exception as e:
+            st.write(f"失敗{e}")
 def studio():
     pass
 app = MultiApp()
