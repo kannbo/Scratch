@@ -13,7 +13,6 @@ def page_main():
     st.header('キー作成')
     name=st.text_input("名前を入力")
     password=st.text_input("セッションIDを入力")
-    st.write("https://github.com/TimMcCool/scratchattach/wiki/Get-your-session-id を参照を進める。")
     if st.button("作成"):
         try:
             scratch3.Session(password,username=password)
@@ -37,7 +36,23 @@ def page_edit():
             st.write("成功!")
         except Exception as e:
             st.write(f"失敗!!:{e}")
+def comment():
+    st.header('無料でお届け')
+    key=st.text_input("キー")
+    ploject=st.text_input("作品のID")
+    text=st.text_input("投稿内容")
+    if st.button("変更!"):
+        try:
+            session = scratch3.Session(st.session_state["account"][key]["password"],username=st.session_state["account"][key]["name"])
+            project = session.connect_project(ploject)
+            project.post_comment(content=text)
+            st.write("成功")
+        except:
+            st.write("失敗")
+def studio():
+    pass
 app = MultiApp()
 app.add_app("キー生成", page_main)
 app.add_app("編集", page_edit)
+app.add_app("コメント投稿", comment)
 app.run()
